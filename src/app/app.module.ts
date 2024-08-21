@@ -15,6 +15,9 @@ import { AddTodoComponent } from './Components/add-todo/add-todo.component';
 import { EmployeeComponent } from './Employee/employee/employee.component';
 import { EmployeeItemComponent } from './Employee/employee-item/employee-item.component';
 import { EmployeeCardComponent } from './Employee/employee-card/employee-card.component';
+import { DatePipe } from '@angular/common';
+import { CurrecyPipePipe } from './customPipes/currecy-pipe.pipe';
+
 // import { AddTodoComponent } from './Compnents/add-todo/add-todo.component';
 //decorator
 @NgModule({
@@ -30,14 +33,15 @@ import { EmployeeCardComponent } from './Employee/employee-card/employee-card.co
     AddTodoComponent,
     EmployeeComponent,
     EmployeeItemComponent,
-    EmployeeCardComponent
+    EmployeeCardComponent,
+    CurrecyPipePipe
    //components ,pipes
   ],
   imports: [
     BrowserModule, //depending modules
     AppRoutingModule,FormsModule
   ],
-  providers: [],  //serices
+  providers: [DatePipe],    //serices
   bootstrap: [AppComponent] //root components
 })
 export class AppModule { }

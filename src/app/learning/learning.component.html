@@ -25,8 +25,8 @@
     <option [value]="location[2]">Dadar</option>
     <!-- <option *ngFor= "let loc of locations" [value]="loc">{{loc | uppercase}}</option>-->
   </select>
-  we can do this also
-  <P>{{ message.toUpperCase() }}</P>
+  we can do this also uppercase
+  <P>{{message | uppercase }}</P>
   <p>
     {{ display() }}
   </p>
@@ -99,4 +99,58 @@
 </div>
 <button class="btn btn-danger" (click)="changeColor('red')">red</button>
 <button class="btn btn-success" (click)="changeColor('green')">green</button>
+
+<hr>
+
+<h1>Pipes</h1>
+{{message | uppercase}}
+slice
+{{message | slice :0 : 3}}
+<h3>NUmber pipes</h3>
+<!-- <table class="table table-striped">
+<tbody>
+  <thead> <tr><th>Salary</th></tr></thead>
+  <tr *ngFor="let salary of salaries"><td>{{salary}}</td></tr>
+  <thead> <tr><th>Salary</th></tr></thead><tr *ngFor="let salary of salaries"><td>{{salary | number}}</td></tr>
+  <thead> <tr><th>Salary</th></tr></thead> <tr *ngFor="let salary of salaries"><td>{{salary | number :".2"}}</td></tr>
+</tbody>
+
+</table> -->
+
+<table class="table table-stripped">
+  <tbody>
+      <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary}}</td></tr>
+      <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary | number}}</td></tr>
+      <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary | number : ".2"}}</td></tr>  <!--upper limit 3 and lower limit 2-->
+      <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary | number : ".2-2"}}</td></tr>
+      <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary | number :"8.2"}}</td></tr>
+
+  </tbody>
+</table>
+
+<h3>Currency PIpes</h3>
+<table class="table table-stripped">
+  <tbody>
+      <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary}}</td></tr>
+      <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary | currency}}</td></tr>
+      <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary | currency : 'INR'}}</td></tr>  <!--upper limit 3 and lower limit 2-->
+      <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary | currency : 'EUR ':'code' }}</td></tr>
+      <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary | currency : 'EUR ':'code':"8.1" |currecyPipe }}</td></tr>
+
+  </tbody>
+</table>
+
+<h3>date pipe</h3>
+
+<table>
+  <tbody>
+    <tr><td>{{today}}</td></tr>
+    <tr><td>{{today | date}}</td></tr> <!---MEDIMUM DATE-->
+    <tr><td>{{today | date : "shortDate" }}</td></tr>
+    <tr><td>{{today | date :"mediumTime"}}</td></tr>
+    <tr><td>{{today | date : "full" }}</td></tr>
+    <tr><td>{{today | date :" MMMM,W,EEEEE"}}</td></tr>
+  </tbody>
+</table>
+<button (click)="test()">FORMAT DATE</button>
 </div>

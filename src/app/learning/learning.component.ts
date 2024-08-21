@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-learning',
@@ -32,7 +34,7 @@ static counter = 0;
 //static companyName="da"
 classRef=LearningComponent;
 location=["Rabale","Parel","Dadar"]
-constructor(){
+constructor(private datePipe : DatePipe){ //DEPENDANCY INJECTION
   LearningComponent.counter ++;
   setTimeout(()=>{
     this.message=`"your best location is" `
@@ -69,4 +71,14 @@ image={
   changeColor(c:string){
     this.color = c;
   }
+
+  salaries=[766690,349000,890000.90,78000.455,100000.1234]
+
+  today=new Date();
+
+  test(){
+    let newFormat=this.datePipe.transform(this.today, "fullDate")
+    console.log(newFormat);
+    
+}
 }
