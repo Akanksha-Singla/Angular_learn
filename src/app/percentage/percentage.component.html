@@ -1,0 +1,55 @@
+<h1> Enter Marks</h1>
+<div class="d-flex flex-column w-25 ">
+
+<input type="number"    [(ngModel)]="subject1" />
+<input  type="number" [(ngModel)]="subject2" />
+<input  type="number"  [(ngModel)]="subject3" />
+</div>
+
+<button (click)="getPercentage()"> Calculate Percentage</button>
+<!-- switch case -->
+
+<div [ngSwitch]="true">
+    <div *ngSwitchCase="percentage >70">distinction</div>
+    <div *ngSwitchCase="percentage < 69 && percentage > 60"> Result : first division</div>
+    <div *ngSwitchCase="percentage < 59 && percentage > 40 "> Result : Pass</div>
+    <div *ngSwitchCase="percentage < 40 && percentage > 0 "> Result : Fail</div>
+    <div *ngSwitchDefault> wrong input</div>
+  </div>
+
+<!-- <b *ngIf="percentage > 70">
+ Result : Distinction
+</b>
+<b *ngIf="percentage < 69 && percentage > 60 ">
+    Result : first division
+</b>
+<b *ngIf="percentage < 59 && percentage > 40 ">
+    Result : Pass
+</b>
+
+<b *ngIf="percentage < 40">
+    Result : Fail
+</b> -->
+<hr>
+
+<b> Select location</b>
+<select
+    id="location"
+    [(ngModel)]="companyLocation"
+    placeholder="comoanyLocation"
+   >
+    <option *ngFor= "let loc of location" [value]="loc">{{loc}}</option>
+ 
+
+
+</select>
+<br>
+<hr>
+<b>Location is:{{companyLocation}}</b>
+<div [ngSwitch]="companyLocation">
+    <div *ngSwitchCase="'Rabale'">Sigma IT Park, Unit No. 501, TTC Industrial Area, Rabale, Navi Mumbai, Maharashtra 400701</div>
+    <div *ngSwitchCase="'Dadar'"> The Ruby Tower, Senapati Bapat Marg, Dadar West, Mumbai, Maharashtra 400028</div>
+    <div *ngSwitchCase="'Parel'"> Business Arcade, Sayani Road, Opp. S. T Bus Stand, Lower Parel, Mumbai, Maharashtra 400013</div>
+    <!-- <div *ngSwitchCase="percentage < 40 && percentage > 0 "> Result : Fail</div> -->
+    <div *ngSwitchDefault> wrong input</div>
+  </div>

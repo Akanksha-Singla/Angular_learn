@@ -1,0 +1,11 @@
+<form (ngSubmit)="addTask()">
+    <div class="container d-flex flex-column gap-2 w-25">
+        <label>Title</label>
+        <input type="text" [(ngModel)]="title" name="title" id="title"/>
+        <label>Description</label>
+    <input type="text" [(ngModel)]="desc" name="description" id="description"/>
+    <button type= "submit" class="btn btn-success" >Add</button>
+    </div>
+</form>
+
+
