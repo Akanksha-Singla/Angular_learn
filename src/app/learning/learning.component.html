@@ -20,10 +20,10 @@
     placeholder="comoanyLocation"
     (change)="display()"
   >
-    <option [value]="location[0]">Rabale</option>
+    <!-- <option [value]="location[0]">Rabale</option>
     <option [value]="location[1]">Parel</option>
-    <option [value]="location[2]">Dadar</option>
-    <!-- <option *ngFor= "let loc of locations" [value]="loc">{{loc | uppercase}}</option>-->
+    <option [value]="location[2]">Dadar</option> -->
+    <option *ngFor= "let loc of location | orderby" [value]="loc">{{loc }}</option>
   </select>
   we can do this also uppercase
   <P>{{message | uppercase }}</P>
@@ -119,8 +119,8 @@ slice
 
 <table class="table table-stripped">
   <tbody>
-      <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary}}</td></tr>
-      <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary | number}}</td></tr>
+      <tr><th>SALARY orderby</th><td *ngFor="let salary of salaries ">{{salary}}</td></tr>
+      <tr><th>SALARY order by1</th><td *ngFor="let salary of salaries | orderby ">{{salary | number}}</td></tr>
       <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary | number : ".2"}}</td></tr>  <!--upper limit 3 and lower limit 2-->
       <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary | number : ".2-2"}}</td></tr>
       <tr><th>SALARY</th><td *ngFor="let salary of salaries">{{salary | number :"8.2"}}</td></tr>
@@ -153,4 +153,11 @@ slice
   </tbody>
 </table>
 <button (click)="test()">FORMAT DATE</button>
+
+<table class="table table-stripped">
+  <tbody>
+      <tr><th>Birth Date</th><td *ngFor="let date of birthDates | orderby">{{date |date}}</td></tr>
+      </tbody>
+</table>
+
 </div>

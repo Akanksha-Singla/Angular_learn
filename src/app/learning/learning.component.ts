@@ -81,4 +81,11 @@ image={
     console.log(newFormat);
     
 }
+
+ birthDates=[
+  new Date('2024-08-31'),
+  new Date('2024-09-15'),
+  new Date('2024-09-03'),
+  new Date('2024-09-14'),
+ ]
 }

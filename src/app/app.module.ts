@@ -7,7 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LearningComponent } from './learning/learning.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { PercentageComponent } from './percentage/percentage.component';
 import { TodoComponent } from './Components/todo/todo.component';
 import { TodoItemComponent } from './Components/todo-item/todo-item.component';
@@ -17,6 +17,8 @@ import { EmployeeItemComponent } from './Employee/employee-item/employee-item.co
 import { EmployeeCardComponent } from './Employee/employee-card/employee-card.component';
 import { DatePipe } from '@angular/common';
 import { CurrecyPipePipe } from './customPipes/currecy-pipe.pipe';
+import { OrderbyPipe } from './customPipe/orderby.pipe';
+import { EmployeeInputComponent } from './Employee/employee-input/employee-input.component';
 
 // import { AddTodoComponent } from './Compnents/add-todo/add-todo.component';
 //decorator
@@ -34,12 +36,14 @@ import { CurrecyPipePipe } from './customPipes/currecy-pipe.pipe';
     EmployeeComponent,
     EmployeeItemComponent,
     EmployeeCardComponent,
-    CurrecyPipePipe
+    CurrecyPipePipe,
+    OrderbyPipe,
+    EmployeeInputComponent
    //components ,pipes
   ],
   imports: [
     BrowserModule, //depending modules
-    AppRoutingModule,FormsModule
+    AppRoutingModule,FormsModule,ReactiveFormsModule
   ],
   providers: [DatePipe],    //serices
   bootstrap: [AppComponent] //root components
