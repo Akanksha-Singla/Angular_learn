@@ -10,6 +10,18 @@ import { Employee } from '../../customclasses/employee';
 export class EmployeeComponent {
 employees!: Emp[];
 neoEmployees :Employee[]=[];
+
+sortBase = 'deptCode'
+
+props = [
+    "empId",
+    "empName",
+    'joiningDate',
+    'basicSalary',
+    'deptCode',
+    'experience',
+   ]
+
 constructor(){
   this.getEmployees();
   this.employees=[
@@ -28,7 +40,7 @@ constructor(){
 }
 getEmployees(){
   this.neoEmployees=[
-    new Employee(111,"Hari kumar", new Date('12-July-2004'), 90000, "LD", 30),
+    new Employee(111,"Hari kumar", new Date('12-July-2004'), 90000, "LD", 30,"abc@gmail.com"),
     new Employee(121,"Shama kumari", new Date('10-July-2004'), 98000, "JS", 25),
     new Employee(100,"Arun vaidya", new Date('18-Dec-2000'), 80000, "LD", 35),
   ]

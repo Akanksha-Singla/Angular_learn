@@ -19,6 +19,7 @@ import { DatePipe } from '@angular/common';
 import { CurrecyPipePipe } from './customPipes/currecy-pipe.pipe';
 import { OrderbyPipe } from './customPipe/orderby.pipe';
 import { EmployeeInputComponent } from './Employee/employee-input/employee-input.component';
+import { AdminFormComponent } from './admin-form/admin-form.component';
 
 // import { AddTodoComponent } from './Compnents/add-todo/add-todo.component';
 //decorator
@@ -38,7 +39,8 @@ import { EmployeeInputComponent } from './Employee/employee-input/employee-input
     EmployeeCardComponent,
     CurrecyPipePipe,
     OrderbyPipe,
-    EmployeeInputComponent
+    EmployeeInputComponent,
+    AdminFormComponent
    //components ,pipes
   ],
   imports: [

@@ -6,6 +6,9 @@ export class Employee {
         public basicSalary=0,
         public deptCode="",
         public experience=0,
-        public empPic="Assets/profilePic.jpg"
-    ){}
+        public emailId="abc@gmail.com",
+        public empPic="Assets/profilePic.jpg",
+        public secreteCode="123@cc"
+        
+){}
 }

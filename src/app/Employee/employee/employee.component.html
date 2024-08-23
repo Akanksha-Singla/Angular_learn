@@ -1,16 +1,23 @@
 <h1>All  Employees here</h1>
-<div *ngFor="let employee of employees">  
-    <app-employee-item [emp] ="employee"></app-employee-item>
-    <!-- <li>{{employee.empName}}</li>
-    <li>{{employee.empAge}}</li>
-    <li>{{employee.empSalary}}</li> -->
-</div>
+<!-- <div *ngFor="let employee of employees">   -->
+    <!-- <app-employee-item [emp] ="employee"></app-employee-item>
+   
+</div> -->
 
 
 <label for="cardColor">Choose color for card</label>
 <input type='color' [(ngModel)]="cardStyle.backgroundColor" id="cardColor" />
+
+
+<label for="sort">Sort with:</label>
+<select name="sort" [(ngModel)]="sortBase">
+  <option *ngFor="let prop of props" [value]="prop">{{prop}}</option>
+</select>
+
+
+
 <div  [ngStyle]="{color:'blue','display':'flex','justify-content':'center','align-items':'center','gap':'2px'}">
 <div class="d-flex">
-  <app-employee-card  *ngFor="let emp of neoEmployees" [employee]="emp" [cardStyle]="cardStyle" [flexClass]="flexClass"></app-employee-card >
+  <app-employee-card  *ngFor="let emp of neoEmployees | orderby: sortBase " [employee]="emp " [cardStyle]="cardStyle" [flexClass]="flexClass"></app-employee-card >
 </div>
 </div> 

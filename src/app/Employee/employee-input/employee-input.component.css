@@ -1,0 +1,11 @@
+input.ng-touced{
+    background-color: cyan;
+}
+
+/* input.ng-invalid{
+    border: 2px double red;
+} */
+
+input.ng-valid, form.ng-valid{
+    border: 2px double green;
+}

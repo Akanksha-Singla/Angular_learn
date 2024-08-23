@@ -14,7 +14,7 @@ return this.numberSort(array,args[0])
       return this.stringSort(array)
     }
     else if(typeof array[0] == 'object' || array[0] == 'Object'){
-      return this.objectSort(array)// assigment to do
+      return this.objectSort(array,args[0])// assigment to do
     }
     else if( array[0] instanceof Date )
       return this.dateSort(array);
@@ -32,9 +32,33 @@ stringSort(array:any[]){
   return array.sort()
 }
 
-objectSort(array:any[]){
-  return array.sort() // have to do this
+// objectSort(array:object[],prop?:string){
+//   console.log("this is a object")
+//   const sorted= array.map((emp:object,index)=>{
+
+//    prop && console.log("prop",emp,index,prop)
+//  })
+// //  console.log("sorted Object",sorted)
+//   return array;  // return array.sort() // have to do this
+// }
+
+objectSort(array: object[], prop?: string) {
+
+if(prop) {
+  // Sorting the array based on the provided property
+  array.sort((a: any, b: any) => {
+    // console.log("a",a,"b",b)
+    const valA = a[prop] 
+    const valB = b[prop] 
+     if(typeof valA && typeof valB == 'string'){
+      return valA.localeCompare(valB)
+    }
+    return valA - valB
+  });
 }
+ return array;
+}
+
 
 dateSort(array:Date[]){
   return array.sort((d1,d2)=>{

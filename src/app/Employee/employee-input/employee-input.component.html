@@ -2,16 +2,19 @@
   <div class="w-50 border border-4 p-4">
     <h3 class="text-center">Employee Input Form</h3>
 
-    <form [formGroup]="employeeForm"  (submit)="collectData()">
+    <form [formGroup]="employeeForm" (submit)="collectData()">
       <div class="mb-3">
         <label for="empId" class="form-label">ID</label>
         <input
           type="number"
           class="form-control"
           id="empId"
-         formControlName="empId"
-        
+          formControlName="empId"
+          [ngClass]="{'border border-danger': eid?.touched && eid?.invalid }"
         />
+        <div class="text-danger text-bold" *ngIf="eid?.touched">
+          <span *ngIf="eid?.hasError('required')">Id is required</span>
+        </div>
       </div>
       <div class="mb-3">
         <label for="empName" class="form-label">Employee Name</label>
@@ -19,8 +22,18 @@
           type="text"
           class="form-control"
           id="empName"
-         formControlName="empName"
+          formControlName="empName"
+          [ngClass]="{'border border-danger': ename?.touched && ename?.invalid }"
         />
+        <div class="text-danger text-bold" *ngIf="ename?.touched">
+          <span *ngIf="ename?.hasError('required')">Name is required</span>
+          <span *ngIf="ename?.hasError('minlength')"
+            >Atleast two character required</span
+          >
+          <span *ngIf="ename?.hasError('pattern')"
+            >Should only include charactes</span
+          >
+        </div>
       </div>
       <div class="mb-3">
         <label for="joiningDate" class="form-label">Joining Date</label>
@@ -29,7 +42,11 @@
           class="form-control"
           id="joiningDate"
           formControlName="joiningDate"
+          [ngClass]="{'border border-danger': joining?.touched && joining?.invalid }"
         />
+        <div class="text-danger text-bold" *ngIf="joining?.touched">
+          <span *ngIf="joining?.hasError('required')">Joining is required</span>
+        </div>
       </div>
       <div class="mb-3">
         <label for="basicSalary" class="form-label">Basic Salary</label>
@@ -38,7 +55,12 @@
           class="form-control"
           id="basicSalary"
           formControlName="basicSalary"
+          [ngClass]="{'border border-danger': salary?.touched && salary?.invalid }"
         />
+        <div class="text-danger text-bold" *ngIf="salary?.touched">
+          <span *ngIf="salary?.hasError('required')">salary is required</span>
+          <span *ngIf="salary?.hasError('min')">Minimum salary is 30000</span>
+        </div>
       </div>
       <div class="mb-3">
         <label for="deptCode" class="form-label">Select Department</label>
@@ -47,6 +69,11 @@
             {{ dept }}
           </option>
         </select>
+        <div class="text-danger text-bold" *ngIf="dcode?.touched">
+          <span *ngIf="dcode?.hasError('required')"
+            >Department code is requied is required</span
+          >
+        </div>
       </div>
       <div class="mb-3">
         <label for="experience" class="form-label">Experience</label>
@@ -54,16 +81,83 @@
           type="number"
           class="form-control"
           id="experience"
-         formControlName="experience"
-
+          formControlName="experience"
+          [ngClass]="{'border border-danger': exp?.touched && exp?.invalid }"
         />
+        <div class="text-danger text-bold" *ngIf="exp?.touched">
+          <span *ngIf="exp?.hasError('required')">exp is required</span>
+          <span *ngIf="exp?.hasError('min')"
+            >Experience can not be negative</span
+          >
+          <span *ngIf="exp?.hasError('max')"
+            >Experience can not be more than 100years</span
+          >
+        </div>
       </div>
+      <div class="mb-3">
+        <label for="emailId" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="emailId"
+          formControlName="emailId"
+          [ngClass]="{'border border-danger': email?.touched && email?.invalid }"
+        />
+        <div class="text-danger text-bold" *ngIf="email?.touched">
+          <span *ngIf="email?.hasError('required')">email is required</span>
+          <span *ngIf="email?.hasError('email')">Enter valid email</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="secreteCode" class="form-label"> Secrete Code</label>
+        <input
+          type="password"
+          class="form-control"
+          id="secreteCode"
+          formControlName="secreteCode"
+          [ngClass]="{'border border-danger': scode?.touched && scode?.invalid }"
+        />
+        <div class="text-danger text-bold" *ngIf="scode?.touched">
+          <span *ngIf="scode?.hasError('required')">Secrete code required</span>
+          <span *ngIf="scode?.hasError('minlength')"
+            >must be atleast 3 letters</span
+          >
+          <span *ngIf="scode?.hasError('maxlength')"
+            >must be atmost 6 letters</span
+          >
+        </div>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="confirmCode" class="form-label">Confirm code</label>
+        <input
+          type="password"
+          class="form-control"
+          id=""
+          formControlName="confirmCode"
+        />
+        <div class="text-danger text-bold" *ngIf="confirm?.touched">
+          <span *ngIf="confirm?.hasError('required')">  required</span>
+          <span *ngIf="employeeForm?.hasError('match')">does not match</span> 
+          <!-- have to pass whole form group as custom validator using it -->
+         </div>
+ 
+      </div>
+
       <div class="mb-3">
         <label for="empPic" class="form-label">Upload Image</label>
         <input type="file" class="form-control" id="empPic" />
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="employeeForm.invalid"
+      >
+        Submit
+      </button>
     </form>
   </div>
 </article>
