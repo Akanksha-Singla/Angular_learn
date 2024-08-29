@@ -1,21 +1,29 @@
-<form #accAdmin = "ngForm"(submit)="onSubmit(accAdmin.value)" style="width: 500px;">
-    <div class="form-group">
-        <label for="userName">userName</label>
-        <input type="text"
-         class="form-control" 
-         id="userName"
-         name="userName"
-         [(ngModel)]="userName"
-         >
-        
-    </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="text"  
-        class="form-control"
-         id="password"
-         name="password"
-         [(ngModel)]="password">
+<!-- admin-login-form.component.html -->
+<article class="d-flex justify-content-center">
+  <div class="w-50 border border-4 p-4">
+  <form #adminForm="ngForm" (ngSubmit)="onSubmit(adminForm)" class="p-4 border border-2 rounded">
+    <h3 class="text-center">Admin Login</h3>
+    <h2 class="text-danger">{{message}}</h2>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" name="username" class="form-control" [(ngModel)]="model.username" #username="ngModel" required
+        />
+        <div class="text-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+          <span >Username is required</span>
+        </div>
       </div>
-      <button class="btn btn-primary">Submit</button>
-</form>
+    
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" name="password" class="form-control" [(ngModel)]="model.password" #passwords="ngModel" required
+        />
+        <div class="text-danger" *ngIf="passwords.invalid && (passwords.dirty || passwords.touched)">
+          <span >Password is required</span>
+        </div>
+      </div>
+    
+      <button type="submit" class="btn btn-success" [disabled]="adminForm.invalid">Login</button>
+  
+    </form>
+    </div>
+    </article>

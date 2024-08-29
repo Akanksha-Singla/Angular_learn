@@ -11,7 +11,7 @@
       <li class="list-group-item">experience ={{employee.experience}}</li>
     </ul>
     <div class="card-body">
-      <a href="#" [ngClass]="cardLinks">Edit</a>
+      <a [routerLink]="['../editemployee',employee._id]" [ngClass]="cardLinks">Edit</a>
       <a href="#" class="card-link link">Delete</a>
     </div>
 </div>

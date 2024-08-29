@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup,FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from '../../customclasses/custom-validators';
+import { Employee } from '../../customclasses/employee';
+import { ActivatedRoute } from '@angular/router';
+import { CrudService } from '../../customServices/crud.service';
 @Component({
   selector: 'app-employee-input',
   templateUrl: './employee-input.component.html',
@@ -11,10 +14,11 @@ export class EmployeeInputComponent {
 employeeForm:FormGroup;
 departmentName="LD"
 deptCodes=["LD","SM","MD"]
+employee= new Employee()
 
-constructor(){
+constructor(public activeRoute:ActivatedRoute, public empCrud:CrudService){
   this.employeeForm=new FormGroup({
-    empId:new FormControl("",[Validators.required]),//required
+    _id:new FormControl("",[Validators.required]),//required
     empName:new FormControl("",[Validators.required,Validators.pattern("[A-Za-z ]*"),Validators.minLength(2)]),//required,pattern,minLength
     joiningDate:new FormControl("",[Validators.required]), //required
     basicSalary:new FormControl("",[Validators.required,Validators.min(30000)]),//required,min
@@ -22,14 +26,15 @@ constructor(){
     emailId:new FormControl("",[Validators.email,Validators.required]),//email
     deptCode:new FormControl("LD"),
     secreteCode:new FormControl("123",[Validators.required,Validators.maxLength(6),Validators.minLength(3)]),
-    confirmCode:new FormControl("",Validators.required)
+    confirmCode:new FormControl("",Validators.required),
+    empPic:new FormControl()
 
   },[CustomValidators.valueMatch('secreteCode', 'confirmCode')]);
 
-  // this.employeeForm.get("empId")?.setValue("678")
+  // this.employeeForm.get("_id")?.setValue("678")
 }
 get eid(){
-  return this.employeeForm.get("empId");
+  return this.employeeForm.get("_id");
 }
 get ename(){
   return this.employeeForm.get("empName");
@@ -57,11 +62,26 @@ get confirm(){
   return this.employeeForm.get("confirmCode")
 }
 collectData(){
-  alert(this.employeeForm.value)
+  console.log(this.employeeForm.value)
+  this.employee = this.employeeForm.value;
+  console.log("employee to be added",this.employee)
+  if(this.activeRoute.snapshot.routeConfig?.path=="addemployee")
+  {let obs = this.empCrud.addEmployee(this.employee)
+    obs.subscribe({
+      next:(data)=>{
+        this.employee = data as Employee;
+        window.alert(`Employee added successfully`)
+      },
+      error:(error)=>console.log(error)
+    })
+    console.log(obs)
+  }
+  // if(this.activeRoute.snapshot.routeConfig?.path=="editemployee/:empId")
+  //  {this.empCrud.updateEmployee(this.employee._id,this.employee);}
+}
 
 }
-}
-function pattern(arg0: string): import("@angular/forms").ValidatorFn {
-  throw new Error('Function not implemented.');
-}
+// function pattern(arg0: string): import("@angular/forms").ValidatorFn {
+//   throw new Error('Function not implemented.');
+// }
 

@@ -9,9 +9,9 @@ export class HeaderComponent implements OnInit {
 
   @Output()
   emitter = new EventEmitter<string>();
-  applicationName ="Employee Crud"
+applicationName ="Employee Crud"
 
-companyName="Neosoft"
+ companyName="Neosoft"
 //whenever parent update the value it is shared with child
 // constructor(){
 //constructor can not fire events
@@ -22,8 +22,8 @@ companyName="Neosoft"
 ngOnInit(): void {
   //we fire event using this life cycle method by default
   //it is a first lifecycle method
-  this.emitter.emit(this.companyName)
-  throw new Error('Method not implemented.');
+this.emitter.emit(this.applicationName)
+//  throw new Error('Method not implemented.');
 }
 
 }

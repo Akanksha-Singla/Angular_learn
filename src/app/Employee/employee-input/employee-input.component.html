@@ -2,14 +2,14 @@
   <div class="w-50 border border-4 p-4">
     <h3 class="text-center">Employee Input Form</h3>
 
-    <form [formGroup]="employeeForm" (submit)="collectData()">
+    <form [formGroup]="employeeForm" (submit)="collectData()" enctype="multipart/form-data">
       <div class="mb-3">
-        <label for="empId" class="form-label">ID</label>
+        <label for="_id" class="form-label">ID</label>
         <input
           type="number"
           class="form-control"
-          id="empId"
-          formControlName="empId"
+          id="_id"
+          formControlName="_id"
           [ngClass]="{'border border-danger': eid?.touched && eid?.invalid }"
         />
         <div class="text-danger text-bold" *ngIf="eid?.touched">
@@ -148,7 +148,7 @@
 
       <div class="mb-3">
         <label for="empPic" class="form-label">Upload Image</label>
-        <input type="file" class="form-control" id="empPic" />
+        <input type="file" class="form-control" id="empPic" formControlName="empPic" />
       </div>
 
       <button

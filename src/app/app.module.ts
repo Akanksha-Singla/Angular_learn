@@ -20,6 +20,11 @@ import { CurrecyPipePipe } from './customPipes/currecy-pipe.pipe';
 import { OrderbyPipe } from './customPipe/orderby.pipe';
 import { EmployeeInputComponent } from './Employee/employee-input/employee-input.component';
 import { AdminFormComponent } from './admin-form/admin-form.component';
+import { HomeComponentComponent } from './home-component/home-component.component';
+import { NeosoftComponent } from './neosoft/neosoft.component';
+import { WebWorksComponent } from './web-works/web-works.component';
+import { ViewNotFoundComponent } from './view-not-found/view-not-found.component';
+import { provideHttpClient } from '@angular/common/http';
 
 // import { AddTodoComponent } from './Compnents/add-todo/add-todo.component';
 //decorator
@@ -40,14 +45,18 @@ import { AdminFormComponent } from './admin-form/admin-form.component';
     CurrecyPipePipe,
     OrderbyPipe,
     EmployeeInputComponent,
-    AdminFormComponent
+    AdminFormComponent,
+    HomeComponentComponent,
+    NeosoftComponent,
+    WebWorksComponent,
+    ViewNotFoundComponent
    //components ,pipes
   ],
   imports: [
     BrowserModule, //depending modules
     AppRoutingModule,FormsModule,ReactiveFormsModule
   ],
-  providers: [DatePipe],    //serices
+  providers: [DatePipe,provideHttpClient()],    //serices
   bootstrap: [AppComponent] //root components
 })
 export class AppModule { }

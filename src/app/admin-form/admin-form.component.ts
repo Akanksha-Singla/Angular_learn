@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { Admin } from '../customclasses/admin';
+// import { Admin } from '../customclasses/admin';
+import { Router } from '@angular/router';
+import { UserService } from '../customServices/user.service';
+
 
 @Component({
   selector: 'app-admin-form',
@@ -7,15 +10,25 @@ import { Admin } from '../customclasses/admin';
   styleUrl: './admin-form.component.css'
 })
 export class AdminFormComponent {
-accountAdmin?:Admin
-userName=''
-password=''
-constructor(){
-  this.accountAdmin= new Admin(this.userName,this.password);
-}
+  model = {
+    username: '',
+    password: ''
+  };
+  message="";
+  flag=false;  //loginService : service object can shared
+  constructor(private router:Router,public userService:UserService){//dependency injection
 
-submitted = false
-onSubmit(values:object) { 
-  console.log(values)
-  this.submitted = true; }
+    console.log("in admin login")
+  }
+
+  onSubmit(form: any) {
+    this.flag=this.userService.login(form.value.username,form.value.password)
+    if (this.flag) {
+      console.log('Form Submitted!', this.model);
+      this.router.navigate(['../home'])
+ } else {
+      console.log('incorrect id and password');
+    }
+  }
+  
 }
